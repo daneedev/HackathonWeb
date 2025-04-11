@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon Web</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="h-full min-h-screen bg-background font-lato">
+    <nav class="flex items-center justify-between p-4 text-white">
+        <a href="/" class="text-lg font-bold">Chytrý ekosystém</a>
+        <ul class="flex space-x-4">
+            <li><a href="/" class="hover:text-gray-400">Domů</a></li>
+            <li><a href="/charts" class="hover:text-gray-400">Grafy</a></li>
+        </ul>
+    </nav>
+    <main class="flex flex-col items-center justify-between h-full text-white m-5">
+        <section class="flex flex-col items-center">
+            <h1 class="text-4xl font-bold mb-4">Chytrý ekosystém</h1>
+            <p class="text-lg mb-8">Oživte svoji rostlinu pomocí technologie!</p>
+        </section>
+        <section class="grid grid-cols-2 gap-5 w-full">
+            <article class="border-primary border-2 rounded-lg p-4 ">
+                <h2 class="text-xl font-bold mb-2">Teplota</h2>
+                <canvas id="temp" width="400" height="300"></canvas>
+            </article>
+            <article class="border-[#8FB8DE] border-2 rounded-lg p-4 ">
+                <h2 class="text-xl font-bold mb-2">Vlhkost vzduchu</h2>
+                <canvas id="airHumidity" width="400" height="300"></canvas>
+            </article>
+            <article class="border-[#DB93B0] border-2 rounded-lg p-4 ">
+                <h2 class="text-xl font-bold mb-2">Půdní vlhkost</h2>
+                <canvas id="soilMoisture" width="400" height="300"></canvas>
+            </article>
+            <article class="border-[#F5CB5C] border-2 rounded-lg p-4 ">
+                <h2 class="text-xl font-bold mb-2">Intenzita světla</h2>
+                <canvas id="lightIntensity" width="400" height="300"></canvas>
+            </article>
+        </section>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="/js/charts.js"></script>
+    </main>
+</body>
+</html>

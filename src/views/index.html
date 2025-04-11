@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon Web</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="h-full min-h-screen bg-background font-lato">
+    <nav class="flex items-center justify-between p-4 text-white">
+        <a href="/" class="text-lg font-bold">Chytrý ekosystém</a>
+        <ul class="flex space-x-4">
+            <li><a href="/" class="hover:text-gray-400">Domů</a></li>
+            <li><a href="/charts" class="hover:text-gray-400">Grafy</a></li>
+        </ul>
+    </nav>
+    <main class="flex flex-col items-center justify-between h-full text-white m-5">
+        <section class="flex flex-col items-center">
+            <h1 class="text-4xl font-bold mb-4">Chytrý ekosystém</h1>
+            <p class="text-lg mb-8">Oživte svoji rostlinu pomocí technologie!</p>
+        </section>
+        <section class="flex flex-col items-center w-full">
+            <a href="/charts" class="border-primary border-2 rounded-lg p-4 ">
+                <h2 class="text-xl font-bold mb-2">Velký graf</h2>
+                <canvas id="bigGraph" width="1000px" height="500px"></canvas>
+            </a>
+        </section>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="/js/charts.js"></script>
+    </main>
+</body>
+</html>
