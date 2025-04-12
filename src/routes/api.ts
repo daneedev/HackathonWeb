@@ -3,11 +3,12 @@ import fs from 'fs';
 const router = express.Router();
 
 router.post("/sendData", function (req, res) {
-    let { RawData } = req.body;
+    let { RawData, id } = req.body;
     res.status(200).json({
         message: "Data received successfully",
         data: {
-            RawData: RawData
+            RawData: RawData,
+            id: id
         }
     });
     RawData = RawData.replace("\x00", "").replace("\r\n", "");
@@ -21,7 +22,14 @@ router.post("/sendData", function (req, res) {
     const SoilMoisture = parseFloat(data[2]);
     const LightIntensity = parseFloat(data[3]);
     // Save data to a file
-    const file = fs.readFileSync("./src/public/data/data.json", "utf-8");
+    
+    let file: string;
+    if (fs.existsSync(`./src/public/data/data-${id}.json`)) {
+        file = fs.readFileSync(`./src/public/data/data-${id}.json`, "utf-8");
+    } else {
+        fs.writeFileSync(`./src/public/data/data-${id}.json`, "[]", "utf-8");
+    }
+    file = fs.readFileSync(`./src/public/data/data-${id}.json`, "utf-8");
     const jsonData = JSON.parse(file);
     const date = new Date();
     jsonData.push({
@@ -31,7 +39,7 @@ router.post("/sendData", function (req, res) {
         soilMoisture: SoilMoisture,
         lightIntensity: LightIntensity
     });
-    fs.writeFileSync("./src/public/data/data.json", JSON.stringify(jsonData, null, 2), "utf-8");
+    fs.writeFileSync(`./src/public/data/data-${id}.json`, JSON.stringify(jsonData, null, 2), "utf-8");
 
     console.log("Data received:", req.body);
 })
