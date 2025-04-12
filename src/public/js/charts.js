@@ -42,7 +42,7 @@ const graphData = {
       fill: false
     },
     {
-      label: 'Vlhkost půdy (%)',  // Popis dat
+      label: 'Vlhkost půdy',  // Popis dat
       data: soilMosture,
       backgroundColor: '#DB93B0',
       borderColor: '#DB93B0',
@@ -151,7 +151,7 @@ const AirHumidityData = {
 const SoilMoistureData = {
     labels: labels,  // Osa X
     datasets: [{
-      label: 'Vlhkost půdy (%)',  // Popis dat
+      label: 'Vlhkost půdy',  // Popis dat
       data: soilMosture,
       backgroundColor: '#DB93B0',
       borderColor: '#DB93B0',
@@ -174,7 +174,8 @@ const SoilMoistureData = {
           beginAtZero: false,
           grid: {
             color: '#909090'
-          }
+          },
+          reverse: true
         },
       }
     },
@@ -185,7 +186,7 @@ const SoilMoistureData = {
 const LightIntensityData = {
     labels: labels,  // Osa X
     datasets: [{
-      label: 'Intenzita světla (lx)',  // Popis dat
+      label: 'Intenzita světla',  // Popis dat
       data: lightIntensity,
       backgroundColor: '#F5CB5C',
       borderColor: '#F5CB5C',
@@ -208,7 +209,8 @@ const LightIntensityData = {
           beginAtZero: false,
           grid: {
             color: '#909090'
-          }
+          },
+          reverse: true
         },
       }
     },
