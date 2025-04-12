@@ -6,4 +6,7 @@
     #charts {
         grid-template-columns: 1fr;
     }
+    #plants {
+        grid-template-columns: 1fr;
+    }
 }
