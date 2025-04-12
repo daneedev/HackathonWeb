@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", async function() {
-const dataRequest = await fetch("/data/data.json")
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.get('id'); // Získání ID z URL
+if (!id) {
+    console.error("ID not found in URL");
+    return;
+}
+const dataRequest = await fetch(`/data/data-${id}.json`)
 const dataFile = await dataRequest.json()
 
 let labels = [] // Osa X
@@ -69,7 +75,8 @@ const graphConfig = {
           color: '#909090'
         }
       },
-    }
+    },
+    responsive: true,
   },
 };
 const graphChart = new Chart(document.getElementById('bigGraph'), graphConfig);
