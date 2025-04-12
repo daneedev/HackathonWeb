@@ -1,4 +1,3 @@
-import { data } from 'cheerio/lib/api/attributes';
 import express from 'express';
 import fs from 'fs';
 const router = express.Router();
