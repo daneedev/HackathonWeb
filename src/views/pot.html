@@ -26,17 +26,36 @@
             {% elif soilStatus === 3 %}
             <article class="border-[#F5CB5C] border-2 rounded-lg p-4">
             {% endif %}
-            <section class="flex flex-row gap-3 items-center justify-center">
-                {% if soilStatus === 1 %}
-                <img src="/img/green.svg" alt="Zalita" class="w-15 h-15">
-                <p class="text-3xl font-extrabold">Stav rostliny: <span class="text-primary text-3xl font-extrabold">zalitá</span></p>
-                {% elif soilStatus === 2 %}
-                <img src="/img/red.svg" alt="Potrebuje zalit" class="w-15 h-15">
-                <p class="text-3xl font-extrabold">Stav rostliny: <span class="text-[#FF8585] text-3xl font-extrabold">potřebuje zalít</span></p>
-                {% elif soilStatus === 3 %}
-                <img src="/img/yellow.svg" alt="Prelita" class="w-15 h-15">
-                <p class="text-3xl font-extrabold">Stav rostliny: <span class="text-[#F5CB5C] text-3xl font-extrabold">přelita</span></p>
-                {% endif %}
+            <section class="flex flex-col gap-3 items-center justify-center">
+                <div class="flex flex-row items-center justify-center gap-3">
+                    {% if soilStatus === 1 %}
+                    <img src="/img/green.svg" alt="Zalita" class="w-15 h-15">
+                    <p class="text-3xl font-extrabold">Stav rostliny: <span class="text-primary text-3xl font-extrabold">zalitá</span></p>
+                    {% elif soilStatus === 2 %}
+                    <img src="/img/red.svg" alt="Potrebuje zalit" class="w-15 h-15">
+                    <p class="text-3xl font-extrabold">Stav rostliny: <span class="text-[#FF8585] text-3xl font-extrabold">potřebuje zalít</span></p>
+                    {% elif soilStatus === 3 %}
+                    <img src="/img/yellow.svg" alt="Prelita" class="w-15 h-15">
+                    <p class="text-3xl font-extrabold">Stav rostliny: <span class="text-[#F5CB5C] text-3xl font-extrabold">přelita</span></p>
+                    {% endif %}
+                </div>
+                <section class="flex flex-row items-center justify-between w-full">
+                    <div class="flex flex-col items-center justify-center gap-2">
+                        <p class="text-2xl font-extrabold">Teplota:</p>
+                        <p class="text-primary text-3xl font-extrabold">{{ temperature }} °C</p>
+                    </div>
+                    <div class="flex flex-col items-center justify-center gap-2">
+                        <p class="text-2xl font-extrabold">Vlhkost půdy:</p>
+                        <p class="text-primary text-3xl font-extrabold">{{ soil}}</p>
+                    </div>
+                    <div class="flex flex-col items-center justify-center gap-2">
+                        <p class="text-2xl font-extrabold">Vlhkost vzduchu:</p>
+                        <p class="text-primary text-3xl font-extrabold">{{ humidity }} %</p>
+                    </div>
+                    <div class="flex flex-col items-center justify-center gap-2">
+                        <p class="text-2xl font-extrabold">Světlo:</p>
+                        <p class="text-primary text-3xl font-extrabold">{{ light }}</p>
+                    </div>
             </section>
             </article>
             <a href="/charts?id={{ id }}" class="border-primary border-2 rounded-lg p-4" id="graphBox">

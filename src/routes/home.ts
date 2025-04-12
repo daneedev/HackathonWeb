@@ -22,7 +22,11 @@ router.get("/pot", function (req, res) {
     }
     res.render("pot.html", {
         soilStatus: soilStatus,
-        id: id
+        id: id,
+        temperature: lastData.temperature,
+        humidity: lastData.airHumidity,
+        soil: lastData.soilMoisture,
+        light: lastData.lightIntensity,
     });
 });
 
