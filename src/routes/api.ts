@@ -1,5 +1,6 @@
 import express from 'express';
 import fs from 'fs';
+import dayjs from 'dayjs';
 const router = express.Router();
 
 router.post("/sendData", function (req, res) {
@@ -31,9 +32,9 @@ router.post("/sendData", function (req, res) {
     }
     file = fs.readFileSync(`./src/public/data/data-${id}.json`, "utf-8");
     const jsonData = JSON.parse(file);
-    const date = new Date();
+    const date = dayjs()
     jsonData.push({
-        time: `${date.getHours()}:${date.getMinutes()}`,
+        time: `${date.hour()}:${date.minute()}`,
         temperature: AirTemperature,
         airHumidity: AirHumidity,
         soilMoisture: SoilMoisture,
