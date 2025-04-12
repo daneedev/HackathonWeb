@@ -1,0 +1,9 @@
+@media (max-width: 768px) {
+    #bigGraph, #temp, #airHumidity, #soilMoisture, #lightIntensity {
+        width: 90% !important;
+        height: 300px !important;
+    }
+    #charts {
+        grid-template-columns: 1fr;
+    }
+}

@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hackathon Web</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
 </head>
-<body class="h-full min-h-screen bg-background font-lato">
-    <nav class="flex items-center justify-between p-4 text-white">
+<body class="h-full min-h-screen bg-background font-lato w-screen overflow-x-hidden">
+    <nav class="flex items-center justify-between p-4 text-white w-screen">
         <a href="/" class="text-lg font-bold">Chytrý ekosystém</a>
         <ul class="flex space-x-4">
             <li><a href="/" class="hover:text-gray-400">Domů</a></li>
@@ -19,10 +20,30 @@
             <h1 class="text-4xl font-bold mb-4">Chytrý ekosystém</h1>
             <p class="text-lg mb-8">Oživte svoji rostlinu pomocí technologie!</p>
         </section>
-        <section class="flex flex-col items-center w-full">
-            <a href="/charts" class="border-primary border-2 rounded-lg p-4 ">
-                <h2 class="text-xl font-bold mb-2">Velký graf</h2>
-                <canvas id="bigGraph" width="1000px" height="500px"></canvas>
+        <section class="flex flex-col items-center justify-center gap-5">
+            {% if soilStatus === 1 %}
+            <article class="border-primary border-2 rounded-lg p-4 mobile">
+            {% elif soilStatus === 2 %}
+            <article class="border-[#FF8585] border-2 rounded-lg p-4">
+            {% elif soilStatus === 3 %}
+            <article class="border-[#F5CB5C] border-2 rounded-lg p-4">
+            {% endif %}
+            <section class="flex flex-row gap-3 items-center justify-center">
+                {% if soilStatus === 1 %}
+                <img src="/img/green.svg" alt="Zalita" class="w-15 h-15">
+                <p class="text-3xl font-extrabold">Stav květiny: <span class="text-primary text-3xl font-extrabold">zalitá</span></p>
+                {% elif soilStatus === 2 %}
+                <img src="/img/red.svg" alt="Potrebuje zalit" class="w-15 h-15">
+                <p class="text-3xl font-extrabold">Stav květiny: <span class="text-[#FF8585] text-3xl font-extrabold">potřebuje zalít</span></p>
+                {% elif soilStatus === 3 %}
+                <img src="/img/yellow.svg" alt="Prelita" class="w-15 h-15">
+                <p class="text-3xl font-extrabold">Stav květiny: <span class="text-[#F5CB5C] text-3xl font-extrabold">přelita</span></p>
+                {% endif %}
+            </section>
+            </article>
+            <a href="/charts" class="border-primary border-2 rounded-lg p-4" id="graphBox">
+                <h2 class="text-xl font-bold mb-2 ">Velký graf</h2>
+                <canvas id="bigGraph" class="w-[900px] h-[600px]"></canvas>
             </a>
         </section>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
