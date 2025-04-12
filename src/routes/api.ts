@@ -34,7 +34,7 @@ router.post("/sendData", function (req, res) {
     const jsonData = JSON.parse(file);
     const date = dayjs()
     jsonData.push({
-        time: `${date.hour()}:${addZero(date.minute())}`,
+        time: `${date.hour() + 2}:${addZero(date.minute())}`,
         temperature: AirTemperature,
         airHumidity: AirHumidity,
         soilMoisture: SoilMoisture,
