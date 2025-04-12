@@ -27,6 +27,7 @@ router.get("/pot", function (req, res) {
         humidity: lastData.airHumidity,
         soil: lastData.soilMoisture,
         light: lastData.lightIntensity,
+        time: lastData.time,
     });
 });
 

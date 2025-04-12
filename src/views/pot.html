@@ -15,7 +15,7 @@
         </ul>
     </nav>
     <main class="flex flex-col items-center justify-between h-full text-white m-5">
-        <section class="flex flex-col items-center">
+        <section class="flex flex-col items-center ">
             <h1 class="text-4xl font-bold mb-4">Rostlina {{ id }}</h1>
         </section>
         <section class="flex flex-col items-center justify-center gap-5">
@@ -39,7 +39,11 @@
                     <p class="text-3xl font-extrabold">Stav rostliny: <span class="text-[#F5CB5C] text-3xl font-extrabold">přelita</span></p>
                     {% endif %}
                 </div>
-                <section class="flex flex-row items-center justify-between w-full">
+                <section class="flex flex-row items-center justify-between w-full gap-5">
+                    <div class="flex flex-col items-center justify-center gap-2">
+                        <p class="text-2xl font-extrabold">Čas:</p>
+                        <p class="text-primary text-3xl font-extrabold">{{ time }}</p>
+                    </div>
                     <div class="flex flex-col items-center justify-center gap-2">
                         <p class="text-2xl font-extrabold">Teplota:</p>
                         <p class="text-primary text-3xl font-extrabold">{{ temperature }} °C</p>
