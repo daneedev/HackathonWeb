@@ -34,7 +34,7 @@ router.post("/sendData", function (req, res) {
     const jsonData = JSON.parse(file);
     const date = dayjs()
     jsonData.push({
-        time: `${date.hour()}:${date.minute()}`,
+        time: `${date.hour()}:${addZero(date.minute())}`,
         temperature: AirTemperature,
         airHumidity: AirHumidity,
         soilMoisture: SoilMoisture,
@@ -44,5 +44,15 @@ router.post("/sendData", function (req, res) {
 
     console.log("Data received:", req.body);
 })
+
+
+function addZero(i : number) {
+    if (i < 10) {
+        return "0" + i;
+    } else {
+        return i;
+    }
+}
+
 
 export default router;
