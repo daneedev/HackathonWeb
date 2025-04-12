@@ -1,17 +1,39 @@
 import express from 'express';
+import fs from 'fs';
 const router = express.Router();
 
 router.post("/sendData", function (req, res) {
-    const { AirHumidity, AirTemperature, SoilMoisture, LightIntensity } = req.body;
+    let { RawData } = req.body;
     res.status(200).json({
         message: "Data received successfully",
         data: {
-            AirHumidity,
-            AirTemperature,
-            SoilMoisture,
-            LightIntensity
+            RawData: RawData
         }
     });
+    RawData = RawData.replace("\x00", "").replace("\r\n", "");
+    if (RawData === "") {
+        console.log("No data received");
+        return;
+    }
+    const data = RawData.split(",");
+    const AirHumidity = parseFloat(data[0]);
+    const AirTemperature = parseFloat(data[1]);
+    const SoilMoisture = parseFloat(data[2]);
+    const LightIntensity = parseFloat(data[3]);
+    // Save data to a file
+    const file = fs.readFileSync("./src/public/data/data.json", "utf-8");
+    const jsonData = JSON.parse(file);
+    const date = new Date();
+    jsonData.push({
+        time: `${date.getHours()}:${date.getMinutes()}`,
+        temperature: AirTemperature,
+        airHumidity: AirHumidity,
+        soilMoisture: SoilMoisture,
+        lightIntensity: LightIntensity
+    });
+    fs.writeFileSync("./src/public/data/data.json", JSON.stringify(jsonData, null, 2), "utf-8");
+
+    console.log("Data received:", req.body);
 })
 
 export default router;
